@@ -4,7 +4,7 @@
 
 To clone the project you can run:
 
-### `git clone https://github.com/shaikmalikbasha583/react-task.git`
+### `git clone https://github.com/shaikmalikbasha/cos-app-fe.git`
 
 Move to project directory:
 
