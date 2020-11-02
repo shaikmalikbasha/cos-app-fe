@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
 
 const ProfileDetails = ({ props }) => {
+	console.log('Yes Profile Component is working...');
 	return (
 		<div className='card'>
 			<div className='card-body'>

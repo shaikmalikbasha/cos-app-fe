@@ -1,15 +1,18 @@
+const employeePages = {
+	Home: '/',
+	Profile: '/profile',
+	Entries: '/entries'
+};
+
 const managerPages = {
+	Home: '/',
 	Profile: '/profile',
 	Employees: '/employees',
 	Entries: '/entries'
 };
 
-const employeePages = {
-	Profile: '/profile',
-	Entries: '/entries'
-};
-
 const adminPages = {
+	Home: '/',
 	Profile: '/profile',
 	Employees: '/employees',
 	Entries: '/entries'

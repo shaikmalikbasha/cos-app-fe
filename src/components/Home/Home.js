@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
 import { loginSuccess, loginFailure } from '../../redux/actions/account';
 import { Redirect, Link } from 'react-router-dom';
-import Profile from './Profile';
+// import Profile from './Profile';
 import { extractRolesFromToken } from '../../utils/token_utils';
 // import { manager_auth } from '../../utils/token_utils';
 // import { manager_auth } from '../../utils/token_utils';

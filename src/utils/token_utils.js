@@ -16,7 +16,6 @@ const extractRolesFromToken = token => {
 
 const auth = () => {
 	const token = ls.get('access_token');
-	console.log('TOKEN: ', token);
 	return token !== undefined ? true : false;
 };
 

@@ -7,11 +7,11 @@ import {
 } from 'react-router-dom';
 import Home from '../Home/Home';
 import Login from '../authentication/Login';
-import EmployeeLayout from '../employee/EmployeeLayout';
-import ManagerLayout from '../manager/ManagerLayout';
-import AdminLayout from '../admin/AdminLayout';
+// import EmployeeLayout from '../employee/EmployeeLayout';
+// import ManagerLayout from '../manager/ManagerLayout';
+// import AdminLayout from '../admin/AdminLayout';
 import EmployeeHome from '../employee/EmployeeHome';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import ManagerHome from '../manager/ManagerHome';
 import AdminHome from '../admin/AdminHome';
 import { manager_auth, auth, admin_auth } from '../../utils/token_utils';
@@ -23,24 +23,26 @@ const PublicRoute = ({ component: Component, ...rest }) => (
 	<Route render={props => <Component {...props} {...rest} />} />
 );
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-	<Route
-		{...rest}
-		render={props =>
-			auth() ? (
-				<MainLayout {...props}>
-					<Component {...props} />
-				</MainLayout>
-			) : (
-				<Redirect
-					to={{
-						pathname: '/login'
-					}}
-				/>
-			)
-		}
-	/>
-);
+const PrivateRoute = ({ component: Component, ...rest }) => {
+	return (
+		<Route
+			{...rest}
+			render={props =>
+				auth() ? (
+					<MainLayout {...props}>
+						<Component {...props} />
+					</MainLayout>
+				) : (
+					<Redirect
+						to={{
+							pathname: '/login'
+						}}
+					/>
+				)
+			}
+		/>
+	);
+};
 
 const ManagerRoute = ({ component: Component, ...rest }) => (
 	<Route
@@ -90,7 +92,10 @@ class App extends Component {
 
 						{/* Private Routes */}
 						<PrivateRoute exact path='/' component={Home} />
-						<PrivateRoute exact path='/profile' component={Profile} />
+						<PrivateRoute path='/profile' component={Profile} />
+
+						<ManagerRoute exact path='/employees' component={Profile} />
+						<ManagerRoute exact path='/entries' component={Profile} />
 
 						<PrivateRoute exact path='/employee' component={EmployeeHome} />
 						<ManagerRoute exact path='/manager' component={ManagerHome} />

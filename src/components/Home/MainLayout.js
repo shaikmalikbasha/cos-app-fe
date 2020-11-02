@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
 import extractedPages from '../pages/pages';
 import { extractRolesFromToken } from '../../utils/token_utils';
-import Profile from './Profile';
+import { Switch, Route, Redirect } from 'react-router-dom';
+// import Profile from './Profile';
 
 const mapStateToProps = state => {
 	// console.log('State: ', state);
@@ -32,12 +33,13 @@ class MainLayout extends Component {
 	}
 
 	render() {
-		console.log('this.props.state:  ', this);
+		// console.log('PROPS =========>   ', this.props);
+		// const Wrapper = this.props.location.pathname;
+		// console.log(Wrapper);
 		return (
 			<div>
 				<Header />
 				<Home pages={this.state.pages} />
-				{/* <Profile /> */}
 				<Footer />
 			</div>
 		);
