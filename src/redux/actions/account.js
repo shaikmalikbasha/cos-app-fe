@@ -4,7 +4,11 @@ import {
 	IS_LOADING,
 	LOGIN_FAILURE,
 	REDIRECT_TO,
-	PAGES
+	PAGES,
+	FETCH_EMPLOYEES,
+	FETCH_ENTRIES,
+	FETCH_ROLES,
+	FETCH_EMP_ENTRIES
 } from '../constants/constants';
 import extractedPages from '../../components/pages/pages';
 
@@ -60,5 +64,33 @@ export const redirectTo = roles => {
 	return {
 		type: REDIRECT_TO,
 		payload: getHomePageUrl(roles)
+	};
+};
+
+export const getEmployees = employees => {
+	return {
+		type: FETCH_EMPLOYEES,
+		payload: employees
+	};
+};
+
+export const getEntries = entries => {
+	return {
+		type: FETCH_ENTRIES,
+		payload: entries
+	};
+};
+
+export const getRoles = roles => {
+	return {
+		type: FETCH_ROLES,
+		payload: roles
+	};
+};
+
+export const getEmployeesEntries = entries => {
+	return {
+		type: FETCH_EMP_ENTRIES,
+		payload: entries
 	};
 };

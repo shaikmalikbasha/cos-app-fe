@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
 import extractedPages from '../pages/pages';
 import { extractRolesFromToken } from '../../utils/token_utils';
-import { Switch, Route, Redirect } from 'react-router-dom';
 // import Profile from './Profile';
 
 const mapStateToProps = state => {
@@ -39,7 +38,7 @@ class MainLayout extends Component {
 		return (
 			<div>
 				<Header />
-				<Home pages={this.state.pages} />
+
 				<Footer />
 			</div>
 		);

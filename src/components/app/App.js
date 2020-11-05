@@ -7,17 +7,13 @@ import {
 } from 'react-router-dom';
 import Home from '../Home/Home';
 import Login from '../authentication/Login';
-// import EmployeeLayout from '../employee/EmployeeLayout';
-// import ManagerLayout from '../manager/ManagerLayout';
-// import AdminLayout from '../admin/AdminLayout';
-import EmployeeHome from '../employee/EmployeeHome';
-// import { connect } from 'react-redux';
-import ManagerHome from '../manager/ManagerHome';
-import AdminHome from '../admin/AdminHome';
 import { manager_auth, auth, admin_auth } from '../../utils/token_utils';
 import Logout from '../authentication/Logout';
-import MainLayout from '../Home/MainLayout';
 import Profile from '../Home/Profile';
+import Employees from '../employees/Employees';
+import Entries from '../entries/Entries';
+import Roles from '../roles/Roles';
+import EmpEntries from '../entries/EmpEntries';
 
 const PublicRoute = ({ component: Component, ...rest }) => (
 	<Route render={props => <Component {...props} {...rest} />} />
@@ -29,9 +25,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 			{...rest}
 			render={props =>
 				auth() ? (
-					<MainLayout {...props}>
-						<Component {...props} />
-					</MainLayout>
+					<Component {...props} />
 				) : (
 					<Redirect
 						to={{
@@ -48,9 +42,7 @@ const ManagerRoute = ({ component: Component, ...rest }) => (
 	<Route
 		render={props =>
 			manager_auth() ? (
-				<MainLayout>
-					<Component {...props} {...rest} />
-				</MainLayout>
+				<Component {...props} {...rest} />
 			) : (
 				<Redirect
 					to={{
@@ -64,11 +56,10 @@ const ManagerRoute = ({ component: Component, ...rest }) => (
 
 const AdminRoute = ({ component: Component, ...rest }) => (
 	<Route
+		{...rest}
 		render={props =>
 			admin_auth() ? (
-				<MainLayout {...props}>
-					<Component {...props} {...rest} />
-				</MainLayout>
+				<Component {...props} {...rest} />
 			) : (
 				<Redirect
 					to={{
@@ -92,14 +83,13 @@ class App extends Component {
 
 						{/* Private Routes */}
 						<PrivateRoute exact path='/' component={Home} />
-						<PrivateRoute path='/profile' component={Profile} />
+						<PrivateRoute exact path='/profile' component={Profile} />
+						<PrivateRoute exact path='/entries' component={Entries} />
 
-						<ManagerRoute exact path='/employees' component={Profile} />
-						<ManagerRoute exact path='/entries' component={Profile} />
-
-						<PrivateRoute exact path='/employee' component={EmployeeHome} />
-						<ManagerRoute exact path='/manager' component={ManagerHome} />
-						<AdminRoute exact path='/admin' component={AdminHome} />
+						<ManagerRoute exact path='/employees' component={Employees} />
+						<ManagerRoute exact path='/emp-entries' component={EmpEntries} />
+						{/* <PrivateRoute exact path='/employee' component={EmployeeHome} /> */}
+						<AdminRoute exact path='/roles' component={Roles} />
 					</Switch>
 				</Router>
 			</div>

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
 import { loginSuccess, loginFailure } from '../../redux/actions/account';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import Profile from './Profile';
 import { extractRolesFromToken } from '../../utils/token_utils';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 // import { manager_auth } from '../../utils/token_utils';
 // import { manager_auth } from '../../utils/token_utils';
 
@@ -41,30 +43,28 @@ class Home extends Component {
 			return <Redirect to='/login' />;
 		}
 
-		let PagesWrapper = null;
-		if (this.props.pages !== null) {
-			PagesWrapper = Object.entries(this.props.pages).map((page, index) => {
-				return (
-					<Link
-						className='btn btn-info'
-						style={{ margin: 2 }}
-						key={index}
-						to={page[1]}>
-						{page[0]}
-					</Link>
-				);
-			});
-		}
-		const customStyle = { marginTop: 10 };
+		// let PagesWrapper = '';
+		// if (this.props.pages !== null) {
+		// 	PagesWrapper = Object.entries(this.props.pages).map((page, index) => {
+		// 		return (
+		// 			<Link
+		// 				className='btn btn-info'
+		// 				style={{ margin: 2 }}
+		// 				key={index}
+		// 				to={page[1]}>
+		// 				{page[0]}
+		// 			</Link>
+		// 		);
+		// 	});
+		// }
+		const customStyle = { marginTop: 60 };
 		return (
 			<div className='container'>
-				<div className='row' style={customStyle}>
-					<div className='col-sm'>{PagesWrapper}</div>
-				</div>
+				<Header />
 				<div className='profile-wrapper' style={customStyle}>
 					<h1 align='center'>Home Page</h1>
 				</div>
-				<div></div>
+				<Footer />
 			</div>
 		);
 	}

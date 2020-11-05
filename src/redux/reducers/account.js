@@ -4,11 +4,19 @@ import {
 	LOGIN_FAILURE,
 	REDIRECT_TO,
 	USER_INFO,
-	PAGES
+	PAGES,
+	FETCH_EMPLOYEES,
+	FETCH_ENTRIES,
+	FETCH_ROLES,
+	FETCH_EMP_ENTRIES
 } from '../constants/constants';
 
 let initialState = {
 	loader: false,
+	employees: [],
+	entries: [],
+	roles: [],
+	empEntries: [],
 	isAuthenticated: false,
 	user: {
 		token: ''
@@ -60,6 +68,26 @@ export const account = (state = initialState, action) => {
 			return {
 				...state,
 				pages: action.payload
+			};
+		case FETCH_EMPLOYEES:
+			return {
+				...state,
+				employees: action.payload
+			};
+		case FETCH_ENTRIES:
+			return {
+				...state,
+				entries: action.payload
+			};
+		case FETCH_ROLES:
+			return {
+				...state,
+				roles: action.payload
+			};
+		case FETCH_EMP_ENTRIES:
+			return {
+				...state,
+				empEntries: action.payload
 			};
 		default:
 			return state;

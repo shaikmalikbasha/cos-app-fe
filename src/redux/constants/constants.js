@@ -16,3 +16,10 @@ export const REDIRECT_TO = 'REDIRECT_TO';
 export const USER_INFO = 'USER_INFO';
 // export const
 export const PAGES = 'PAGES';
+
+// EMPLOYEES
+export const FETCH_EMPLOYEES = 'FETCH_EMPLOYEES';
+export const FETCH_ENTRIES = 'FETCH_ENTRIES';
+export const FETCH_ROLES = 'FETCH_ROLES';
+
+export const FETCH_EMP_ENTRIES = 'FETCH_EMP_ENTRIES';

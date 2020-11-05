@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import defaultParams from '../../config/config';
 
 const ProfileDetails = ({ props }) => {
-	console.log('Yes Profile Component is working...');
+	// console.log('Yes Profile Component is working...');
 	return (
 		<div className='card'>
 			<div className='card-body'>
@@ -28,10 +31,10 @@ class Profile extends Component {
 	}
 
 	getProfileDetails() {
-		const URL = 'http://localhost:5000/employee/details';
+		const URL = defaultParams.baseUrl;
 		const token = ls.get('access_token');
 		if (token !== undefined) {
-			fetch(URL, {
+			fetch(URL + '/employee/details', {
 				headers: {
 					Authorization: 'Bearer ' + token
 				}
@@ -53,12 +56,17 @@ class Profile extends Component {
 		this.getProfileDetails();
 	}
 	render() {
-		console.log('this.state.state........===>', this.props);
-		if (this.state.userInfo !== null) {
-			return <ProfileDetails props={this.state.userInfo} />;
-		} else {
-			return null;
-		}
+		return (
+			<div>
+				<Header />
+				{this.state.userInfo !== null ? (
+					<ProfileDetails props={this.state.userInfo} />
+				) : (
+					''
+				)}
+				<Footer />
+			</div>
+		);
 	}
 }
 

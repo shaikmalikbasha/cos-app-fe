@@ -23,18 +23,19 @@ const manager_auth = () => {
 	if (auth()) {
 		const decodedToken = parseJwt(ls.get('access_token'));
 		const roles = decodedToken.user_claims.roles;
-		return roles.includes('MANAGER') ? true : false;
+		return roles.includes('MANAGER') || roles.includes('ADMIN') ? true : false;
 	}
 	return false;
 };
 
 const admin_auth = () => {
+	let response = false;
 	if (auth()) {
 		const decodedToken = parseJwt(ls.get('access_token'));
 		const roles = decodedToken.user_claims.roles;
-		return roles.includes('ADMIN') ? true : false;
+		response = roles.includes('ADMIN') ? true : false;
 	}
-	return false;
+	return response;
 };
 
 export { auth, manager_auth, admin_auth, extractRolesFromToken };

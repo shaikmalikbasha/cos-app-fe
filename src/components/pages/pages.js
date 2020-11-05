@@ -8,14 +8,17 @@ const managerPages = {
 	Home: '/',
 	Profile: '/profile',
 	Employees: '/employees',
-	Entries: '/entries'
+	Entries: '/entries',
+	EmpEntries: 'emp-entries'
 };
 
 const adminPages = {
 	Home: '/',
 	Profile: '/profile',
 	Employees: '/employees',
-	Entries: '/entries'
+	Entries: '/entries',
+	Roles: '/roles',
+	EmpEntries: 'emp-entries'
 };
 
 const extractedPages = roles => {

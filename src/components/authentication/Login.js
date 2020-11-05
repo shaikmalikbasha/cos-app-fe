@@ -8,8 +8,9 @@ import {
 	loginFailure,
 	redirectTo
 } from '../../redux/actions/account';
-import Loader from '../Loader/Loader';
+import Loader from '../loader/Loader';
 import { reactLocalStorage as ls } from 'reactjs-localstorage';
+import defaultParams from '../../config/config';
 
 const mapStateToProps = state => {
 	// console.log('STATE: ', state);
@@ -58,7 +59,8 @@ class Login extends Component {
 		};
 		this.props.isLoading(true);
 
-		fetch('http://localhost:5000/login', {
+		const URL = defaultParams.baseUrl;
+		fetch(URL + '/login', {
 			method: 'POST',
 			body: JSON.stringify(credentials),
 			headers: {
