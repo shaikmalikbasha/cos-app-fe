@@ -49,7 +49,7 @@ class Roles extends Component {
 		fetch(BASE_URL + '/roles')
 			.then(response => response.json())
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				this.props.getRoles(res.roles);
 				this.props.isLoading(false);
 			});

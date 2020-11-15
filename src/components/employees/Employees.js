@@ -11,7 +11,8 @@ import Loader from '../loader/Loader';
 const mapStateToProps = state => {
 	return {
 		loader: state.account.loader,
-		employees: state.account.employees
+		employees: state.account.employees,
+		roles: state.account.roles
 	};
 };
 
@@ -41,7 +42,10 @@ class Employees extends Component {
 		return (
 			<div className='employees-wrapper'>
 				<Header />
-				<AddEmployee fetchEmployees={this.getEmployeesList} />
+				<AddEmployee
+					fetchEmployees={this.getEmployeesList}
+					roles={this.props.roles}
+				/>
 				<Employee employees={this.props.employees} />
 				<Footer />
 			</div>
